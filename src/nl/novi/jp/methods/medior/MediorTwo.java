@@ -10,9 +10,17 @@ public class MediorTwo {
 
     public static void main(String[] args) {
 
+
+        if(isOldEnough(19)) {
+            printProceed();
+        } else {
+            printUnderAgeWarning();
+        }
+
     }
 
-    public  static boolean isOldEnough(int age) {
+    public static boolean isOldEnough(int age) {
+
         if(age > 17) {
             return true;
         } else {

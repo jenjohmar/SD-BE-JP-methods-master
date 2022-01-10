@@ -2,6 +2,7 @@ package nl.novi.jp.methods.senior;
 
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Objects;
 
 /**
  * Lees eerst wat een Map is: https://www.w3schools.com/java/java_hashmap.asp
@@ -25,12 +26,19 @@ public class SeniorTwo {
         englishDutchWords.put("cup","beker");
         englishDutchWords.put("screen","scherm");
 
-        translate(englishDutchWords, "cup");
+
+        System.out.println(translate(englishDutchWords, "kitchen"));
     }
 
     public static String translate(Map<String, String> words, String word) {
+        String transWord;
+        if (words.containsKey(word)) {
+            transWord = words.get(word);
+        } else {
+           transWord = "Geen vertaling beschikbaar voor: " + word;
 
-        return "";
+        }
+        return transWord;
+
     }
-
 }

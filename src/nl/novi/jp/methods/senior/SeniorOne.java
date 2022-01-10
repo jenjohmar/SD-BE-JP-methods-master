@@ -2,6 +2,7 @@ package nl.novi.jp.methods.senior;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 
 /**
@@ -18,18 +19,60 @@ import java.util.List;
 
 public class SeniorOne {
     public static void main(String[] args) {
-        List<String> curstomerNames = new ArrayList<>();
+        List<String> customerNames = new ArrayList<>();
 
-        curstomerNames.add("nick piraat");
-        curstomerNames.add("michael jackson");
-        curstomerNames.add("glennis grace");
-        curstomerNames.add("dreetje hazes");
-        curstomerNames.add("robbie williams");
-        curstomerNames.add("michiel de ruyter");
-        curstomerNames.add("sjaak polak");
-        curstomerNames.add("jan van jansen");
-        curstomerNames.add("henk den hartog");
-        curstomerNames.add("mo el-mecky");
-        curstomerNames.add("fredje kadetje");
+        customerNames.add("nick piraat");
+        customerNames.add("michael jackson");
+        customerNames.add("glennis grace");
+        customerNames.add("dreetje hazes");
+        customerNames.add("robbie williams");
+        customerNames.add("michiel de ruyter");
+        customerNames.add("sjaak polak");
+        customerNames.add("jan van jansen");
+        customerNames.add("henk den hartog");
+        customerNames.add("mo el-mecky");
+        customerNames.add("fredje kadetje");
+
+        List<String> checkedList = checkCapitals(customerNames);
+
+        System.out.println(checkedList);
     }
+
+    public static List<String> checkCapitals(List<String> names) {
+        List<String> checkedNames = new ArrayList<>();
+
+        //voor elke string in de lijst namen
+        for (String name:names) {
+            //maak van deze string een lijst met losse woorden
+            String separateWords[] = name.split("\\s");
+            //lege string die gevuld gaat worden
+            String capitalizedWords = "";
+            //pak het eerste en laatste woord uit de lijst separateWords en maak van de eerste letter een hoofdletter
+            String firstWordCap = capitalize(separateWords[0]);
+            String lastWordCap = capitalize(separateWords[separateWords.length -1]);
+
+            //vervang het eerste en laatste woord in de lijst door de gekapitaliseerde woorden
+            separateWords[0] = firstWordCap;
+            separateWords[separateWords.length -1] = lastWordCap;
+            // maak van de lijst een string
+            String newName = String.join(" ", separateWords);
+
+            checkedNames.add(newName);
+        }
+
+        return checkedNames;
+
+    }
+
+    public static String capitalize(String word) {
+        String newWord = "";
+        String first = word.substring(0,1);
+        String rest = word.substring(1);
+        newWord += first.toUpperCase() + rest + " ";
+
+        return newWord.trim();
+
+    }
+
+
 }
